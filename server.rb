@@ -7,7 +7,7 @@ require 'sinatra'
 require 'sinatra-env'
 require 'sinatra/contrib'
 require 'haml'
-require 'data_mapper'
+require 'dm-core'
 require 'dm-migrations'
 require 'dm-serializer'
 
