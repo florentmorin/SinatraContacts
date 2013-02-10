@@ -8,7 +8,8 @@ require 'haml'
 require 'dm-core'
 require 'dm-migrations'
 require 'dm-serializer'
-require 'dm-sqlite-adapter'
+#require 'dm-sqlite-adapter'
+require 'dm-postgres-adapter'
 require 'json'
 
 ## Initial setup ##
@@ -17,8 +18,9 @@ configure do
   set :show_exceptions, false
 end
 
-DataMapper.setup( :default, "sqlite3://#{Dir.pwd}/database.db" )
- 
+#DataMapper.setup( :default, "sqlite3://#{Dir.pwd}/database.db" )
+DataMapper.setup(:default, ENV['DATABASE_URL'] || 'postgres://localhost/mydb')
+
 # Contact model
 class Contact
   include DataMapper::Resource
