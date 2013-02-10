@@ -1,0 +1,19 @@
+%h1 Contacts
+%a(href="/contacts/new") Nouveau Contact
+%br
+%br
+%table(style="width:100%" border="1")
+  %tr
+    %th Prénom
+    %th Nom
+    %th Email
+    %th Actions
+  - cs.each do|c|
+    %tr
+      %td= c.firstname
+      %td= c.lastname
+      %td= c.email
+      %td
+        %a(href="/contacts/#{c.id}") Voir
+        |
+        %a(href="/contacts/#{c.id}/edit") Modifier

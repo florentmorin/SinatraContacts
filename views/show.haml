@@ -1,0 +1,17 @@
+%h1= c.firstname + ' ' + c.lastname
+
+%table
+  %tr
+    %td Nom :
+    %td= c.firstname
+  %tr
+    %td Prénom :
+    %td= c.lastname
+  %tr
+    %td Email :
+    %td= c.email
+
+%br
+%a(href="/contacts/#{c.id}/edit") Modifier le contact
+%br
+%a(href="/contacts/") Retour à la liste des contacts
