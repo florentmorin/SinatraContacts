@@ -1,0 +1,9 @@
+rubygems
+sinatra
+sinatra/contrib
+haml
+dm-core
+dm-migrations
+dm-serializer
+dm-sqlite-adapter
+json
