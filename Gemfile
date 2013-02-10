@@ -1,0 +1,10 @@
+source 'http://rubygems'
+
+gem 'sinatra'
+gem 'sinatra-contrib'
+gem 'haml'
+gem 'dm-core'
+gem 'dm-migrations'
+gem 'dm-serializer'
+gem 'dm-sqlite-adapter'
+gem 'json'
