@@ -2,14 +2,22 @@
 #encoding: utf-8
 
 require 'rubygems'
+require 'bundler/setup'
 require 'sinatra'
+require 'sinatra-env'
 require 'sinatra/contrib'
 require 'haml'
 require 'dm-core'
 require 'dm-migrations'
 require 'dm-serializer'
-#require 'dm-sqlite-adapter'
-require 'dm-postgres-adapter'
+
+if Sinatra.env.development?
+  require 'dm-sqlite-adapter'
+end
+
+if Sinatra.env.production?
+  require 'dm-postgres-adapter'
+end
 require 'json'
 
 ## Initial setup ##
@@ -18,8 +26,13 @@ configure do
   set :show_exceptions, false
 end
 
-#DataMapper.setup( :default, "sqlite3://#{Dir.pwd}/database.db" )
-DataMapper.setup(:default, ENV['DATABASE_URL'] || 'postgres://localhost/mydb')
+if Sinatra.env.development?
+  DataMapper.setup( :default, "sqlite3://#{Dir.pwd}/database.db" )
+end
+
+if Sinatra.env.production?
+  DataMapper.setup(:default, ENV['DATABASE_URL'] || 'postgres://localhost/mydb')
+end
 
 # Contact model
 class Contact
