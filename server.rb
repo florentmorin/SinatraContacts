@@ -110,7 +110,7 @@ end
 ## REST API ##
 
 # Read all
-get '/api/contacts/' do
+get '/api/contacts/', '/api/contacts' do
   content_type 'application/json'
   Contact.all.to_a.to_json
 end
