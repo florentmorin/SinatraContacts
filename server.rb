@@ -132,7 +132,8 @@ end
 post '/api/contacts/', '/api/contacts' do
   raw = request.env["rack.input"].read
   
-  payload = JSON.parse raw
+  payload = params
+#  payload = JSON.parse raw
   
   c = Contact.new
   c.attributes = payload
