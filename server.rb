@@ -130,7 +130,7 @@ end
 
 # Create a contact
 post '/api/contacts/', '/api/contacts' do
-  payload = request.params
+  payload = params
 
   if payload.nil? ||  payload.empty?
     raw = request.env["rack.input"].read
