@@ -131,18 +131,16 @@ end
 # Create a contact
 post '/api/contacts/', '/api/contacts' do
   payload = request.params
-    
+
   if payload.nil? ||  payload.empty?
     raw = request.env["rack.input"].read
     payload = JSON.parse raw
   end
   
-  if !!payload.nil? && payload[:id].present?
-    payload.delete :id
-  end
-  
   c = Contact.new
-  c.attributes = payload
+  c.firstname = payload[:firstname]
+  c.lastname = payload[:lastname]
+  c.email = payload[:email]
   c.save
   
   status 201
