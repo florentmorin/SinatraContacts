@@ -132,8 +132,11 @@ end
 post '/api/contacts/' do
   raw = request.env["rack.input"].read.to_s
   
+  puts "Raw 1: #{raw}"
+  
   if raw.nil? || raw.empty?
     raw = request.body.read.to_s
+    puts "Raw 2: #{raw}"
   end
   
   payload = JSON.parse raw
