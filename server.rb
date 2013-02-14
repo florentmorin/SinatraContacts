@@ -150,7 +150,7 @@ end
 
 # Update a contact
 put '/api/contacts/:id' do |id|
-  payload = request.params
+  payload = params
     
   if payload.nil? ||  payload.empty?
     raw = request.env["rack.input"].read
@@ -164,7 +164,9 @@ put '/api/contacts/:id' do |id|
     return
   end
   
-  c.update payload
+  c.firstname = payload[:firstname]
+  c.lastname = payload[:lastname]
+  c.email = payload[:email]
   c.save
   
   status 200
