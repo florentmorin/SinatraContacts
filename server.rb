@@ -129,17 +129,8 @@ get '/api/contacts/:id' do |id|
 end
 
 # Create a contact
-post '/api/contacts/' do
-  raw = request.body.length.to_s
-  
-  return raw
-  
-  puts "Raw 1: #{raw}"
-  
-  if raw.nil? || raw.empty?
-    raw = request.body.string
-    puts "Raw 2: #{raw}"
-  end
+post '/api/contacts/', '/api/contacts' do
+  raw = request.env["rack.input"].read
   
   payload = JSON.parse raw
   
