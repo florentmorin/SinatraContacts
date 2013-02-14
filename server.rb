@@ -132,10 +132,14 @@ end
 post '/api/contacts/', '/api/contacts' do
   payload = request.params
     
-#  if payload.nil? ||  payload.empty?
-#    raw = request.env["rack.input"].read
-#    payload = JSON.parse raw
-#  end
+  if payload.nil? ||  payload.empty?
+    raw = request.env["rack.input"].read
+    payload = JSON.parse raw
+  end
+  
+  if payload[:id].present?
+    payload.delete :id
+  end
   
   c = Contact.new
   c.attributes = payload
@@ -150,10 +154,10 @@ end
 put '/api/contacts/:id' do |id|
   payload = request.params
     
-#  if payload.nil? ||  payload.empty?
-#    raw = request.env["rack.input"].read
-#    payload = JSON.parse raw
-#  end
+  if payload.nil? ||  payload.empty?
+    raw = request.env["rack.input"].read
+    payload = JSON.parse raw
+  end
   
   c = Contact.get(id)
   
