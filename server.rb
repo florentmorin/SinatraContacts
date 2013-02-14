@@ -130,7 +130,7 @@ end
 
 # Create a contact
 post '/api/contacts/' do
-  raw = request.env["rack.input"].read.to_s
+  raw = request.body.string
   
   puts "Raw 1: #{raw}"
   
