@@ -130,7 +130,7 @@ end
 
 # Create a contact
 post '/api/contacts/' do
-  req = Request.new(request)
+  req = request.clone
   raw = req.env["rack.input"].read
   
   if raw.nil?
