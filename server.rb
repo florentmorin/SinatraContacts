@@ -134,11 +134,11 @@ post '/api/contacts/', '/api/contacts' do
 
   payload = nil
   
-  if !raw.nil? && !raw.empty
+  if !raw.nil? && !raw.empty?
     payload = JSON.parse raw
   end
   
-  if payload.nil? || payload.empty
+  if payload.nil? || payload.empty?
     payload = params
   end
   
