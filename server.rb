@@ -132,6 +132,8 @@ end
 post '/api/contacts/' do
   raw = request.body.string
   
+  return raw
+  
   puts "Raw 1: #{raw}"
   
   if raw.nil? || raw.empty?
