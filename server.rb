@@ -135,7 +135,7 @@ post '/api/contacts/' do
   puts "Raw 1: #{raw}"
   
   if raw.nil? || raw.empty?
-    raw = request.body.read.to_s
+    raw = request.body.string
     puts "Raw 2: #{raw}"
   end
   
