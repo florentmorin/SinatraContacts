@@ -152,10 +152,12 @@ end
 put '/api/contacts/:id' do |id|
   payload = params
     
-  if payload.nil? ||  payload.empty?
+  if payload.nil? || payload.empty?
     raw = request.env["rack.input"].read
     payload = JSON.parse raw
   end
+  
+  return payload.inspect
   
   c = Contact.get(id)
   
