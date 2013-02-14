@@ -157,8 +157,6 @@ put '/api/contacts/:id' do |id|
     payload = JSON.parse raw
   end
   
-  return payload.inspect
-  
   c = Contact.get(id)
   
   if c.nil?
