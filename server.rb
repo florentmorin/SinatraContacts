@@ -54,7 +54,7 @@ get '/' do
 end
  
 # Show list of contacts
-get '/contacts/' do
+get '/contacts/', '/contacts' do
   haml :list, :locals => { :cs => Contact.all }
 end
  
@@ -129,7 +129,7 @@ get '/api/contacts/:id' do |id|
 end
 
 # Create a contact
-post '/api/contacts/' do
+post '/api/contacts/', '/api/contacts' do
   raw = request.env["rack.input"].read
   payload = JSON.parse raw
   
