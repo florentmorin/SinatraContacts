@@ -129,7 +129,7 @@ get '/api/contacts/:id' do |id|
 end
 
 # Create a contact
-post '/api/contacts/', '/api/contacts' do
+post '/api/contacts/' do
   raw = request.env["rack.input"].read
   payload = JSON.parse raw
   
