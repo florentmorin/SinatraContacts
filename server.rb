@@ -131,9 +131,16 @@ end
 # Create a contact
 post '/api/contacts/', '/api/contacts' do
   raw = request.env["rack.input"].read
+
+  payload = nil
   
-  payload = params
-#  payload = JSON.parse raw
+  if !raw.nil? && !raw.empty
+    payload = JSON.parse raw
+  end
+  
+  if payload.nil? || payload.empty
+    payload = params
+  end
   
   c = Contact.new
   c.attributes = payload
