@@ -69,14 +69,24 @@ end
 # Create new contact
 post '/contacts/create' do
   c = Contact.new
-  c.attributes = params
+  if !params[:firstname].nil?
+    c.firstname = params[:firstname]
+  end
+  
+  if !params[:lastname].nil?
+    c.lastname = params[:lastname]
+  end
+  
+  if !params[:email].nil?
+    c.email = params[:email]
+  end
   c.save
  
   redirect("/contacts/#{c.id}")
 end
  
 # Show form to edit contact
-get '/contacts/:id/edit' do|id|
+get '/contacts/:id/edit' do |id|
   c = Contact.get(id)
   haml :form, :locals => {
     :c => c,
@@ -87,7 +97,20 @@ end
 # Edit a contact
 post '/contacts/:id/update' do |id|
   c = Contact.get(id)
-  c.update params
+
+  if !params[:firstname].nil?
+    c.firstname = params[:firstname]
+  end
+  
+  if !params[:lastname].nil?
+    c.lastname = params[:lastname]
+  end
+  
+  if !params[:email].nil?
+    c.email = params[:email]
+  end
+  
+  c.save
  
   redirect "/contacts/#{id}"
 end
