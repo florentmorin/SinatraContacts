@@ -130,12 +130,7 @@ end
 
 # Create a contact
 post '/api/contacts/' do
-  req = request.clone
-  raw = req.env["rack.input"].read
-  
-  if raw.nil?
-    raw = req.body.read
-  end
+  raw = request.body.read
   
   payload = JSON.parse raw
   
