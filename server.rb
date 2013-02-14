@@ -164,15 +164,15 @@ put '/api/contacts/:id' do |id|
     return
   end
   
-  if payload[:firstname].present?
+  if !payload[:firstname].nil?
     c.firstname = payload[:firstname]
   end
   
-  if payload[:lastname].present?
+  if !payload[:lastname].nil?
     c.lastname = payload[:lastname]
   end
   
-  if payload[:email].present?
+  if !payload[:email].nil?
     c.email = payload[:email]
   end
   
