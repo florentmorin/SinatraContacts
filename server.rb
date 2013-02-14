@@ -148,8 +148,12 @@ end
 
 # Update a contact
 put '/api/contacts/:id' do |id|
-  raw = request.env["rack.input"].read
-  payload = JSON.parse raw
+  payload = request.params
+    
+  if payload.nil? ||  payload.empty?
+    raw = request.env["rack.input"].read
+    payload = JSON.parse raw
+  end
   
   c = Contact.get(id)
   
