@@ -164,9 +164,18 @@ put '/api/contacts/:id' do |id|
     return
   end
   
-  c.firstname = payload[:firstname]
-  c.lastname = payload[:lastname]
-  c.email = payload[:email]
+  if payload[:firstname].present?
+    c.firstname = payload[:firstname]
+  end
+  
+  if payload[:lastname].present?
+    c.lastname = payload[:lastname]
+  end
+  
+  if payload[:email].present?
+    c.email = payload[:email]
+  end
+  
   c.save
   
   status 200
