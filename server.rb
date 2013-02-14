@@ -132,7 +132,9 @@ end
 post '/api/contacts/', '/api/contacts' do
   payload = params
   
-  if !payload["firstname"] || !payload["lastname"] || !payload["email"]
+  return payload.inspect
+  
+  if payload.empty
     raw = request.env["rack.input"].read
     payload = JSON.parse raw
   end
