@@ -130,7 +130,7 @@ end
 
 # Create a contact
 post '/api/contacts/' do
-  raw = request.body.inspect
+  raw = request.body.read
   
   return raw
   
