@@ -137,7 +137,7 @@ post '/api/contacts/', '/api/contacts' do
     payload = JSON.parse raw
   end
   
-  if payload[:id].present?
+  if !!payload.nil? && payload[:id].present?
     payload.delete :id
   end
   
