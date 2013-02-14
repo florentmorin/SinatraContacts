@@ -132,10 +132,10 @@ end
 post '/api/contacts/', '/api/contacts' do
   payload = params
     
-  if payload.empty?
-    raw = request.env["rack.input"].read
-    payload = JSON.parse raw
-  end
+#  if payload.empty?
+#    raw = request.env["rack.input"].read
+#    payload = JSON.parse raw
+#  end
   
   c = Contact.new
   c.attributes = payload
