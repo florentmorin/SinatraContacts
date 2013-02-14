@@ -62,7 +62,8 @@ end
 get '/contacts/new' do
   haml :form, :locals => {
     :c => Contact.new,
-    :action => '/contacts/create'
+    :action => '/contacts/create',
+    :title => "Ajouter un contact"
   }
 end
  
@@ -90,7 +91,8 @@ get '/contacts/:id/edit' do |id|
   c = Contact.get(id)
   haml :form, :locals => {
     :c => c,
-    :action => "/contacts/#{c.id}/update"
+    :action => "/contacts/#{c.id}/update",
+    :title => "Modifier un contact"
   }
 end
  
