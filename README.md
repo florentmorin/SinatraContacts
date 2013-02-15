@@ -14,7 +14,7 @@
 3. Create heroku app: **heroku create**
 4. Install postgresql addon: **heroku addons:add heroku-postgresql:dev**
 5. Get database URL: **heroku config | grep HEROKU_POSTGRESQL**
-6. Establish primary db: **heroku pg:promote \_HEROKU\_POSTGRESQL\__COLOR_\_URL\_**
+6. Establish primary db: **heroku pg:promote \_HEROKU\_POSTGRESQL\_<em>COLOR</em>\_URL\_**
 7. Deploy: **git push heroku master**
 
 ## Usage
